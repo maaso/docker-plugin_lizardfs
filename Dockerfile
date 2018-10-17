@@ -8,8 +8,8 @@ FROM node:8-slim
 RUN wget -O - http://packages.lizardfs.com/lizardfs.key | apt-key add -
 
 # Add apt repositories
-RUN echo "deb http://packages.lizardfs.com/debian/jessie jessie main" > /etc/apt/sources.list.d/lizardfs.list && \
-    echo "deb-src http://packages.lizardfs.com/debian/jessie  jessie main" >> /etc/apt/sources.list.d/lizardfs.list
+RUN echo "deb http://packages.lizardfs.com/debian/stretch stretch main" > /etc/apt/sources.list.d/lizardfs.list && \
+    echo "deb-src http://packages.lizardfs.com/debian/stretch  stretch main" >> /etc/apt/sources.list.d/lizardfs.list
 
 # Install LizardFS packages
 RUN apt-get update && \
