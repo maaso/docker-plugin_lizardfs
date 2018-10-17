@@ -7,8 +7,8 @@ FROM ubuntu:18.04
 ####
 # Install Node.js
 ####
-RUN apt-get install --yes curl
-RUN curl --silent --location https://deb.nodesource.com/setup_10.x | sudo bash -
+RUN apt-get install --yes wget
+RUN wget -qO- https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get install --yes nodejs
 RUN apt-get install --yes build-essential
 
