@@ -4,12 +4,8 @@ FROM node:stretch
 # Install LizardFS client
 ####
 
-# Install LizardFS Key
-RUN wget -O - http://packages.lizardfs.com/lizardfs.key | apt-key add -
-
-# Add apt repositories
-RUN echo "deb http://packages.lizardfs.com/debian/stretch stretch main" > /etc/apt/sources.list.d/lizardfs.list && \
-    echo "deb-src http://packages.lizardfs.com/debian/stretch  stretch main" >> /etc/apt/sources.list.d/lizardfs.list
+# Add backports apt repository
+RUN echo "deb http://ftp.debian.org/debian stretch-backports main" > /etc/apt/sources.list.d/backports.list 
 
 # Install LizardFS packages
 RUN apt-get update && \
