@@ -1,22 +1,30 @@
-FROM node:stretch
+####
+# Pull base image.
+####
+FROM ubuntu:18.04
+
+
+####
+# Install Node.js
+####
+RUN apt-get install --yes curl
+RUN curl --silent --location https://deb.nodesource.com/setup_10.x | sudo bash -
+RUN apt-get install --yes nodejs
+RUN apt-get install --yes build-essential
+
 
 ####
 # Install LizardFS client
 ####
-
-# Add backports apt repository
-RUN echo "deb http://ftp.debian.org/debian stretch-backports main" > /etc/apt/sources.list.d/backports.list 
-
-# Install LizardFS packages
 RUN apt-get update && \
     apt-get install -y lizardfs-client && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+
 ####
 # Install Docker volume driver API server
 ####
-
 # Create directories for mounts
 RUN mkdir -p /mnt/lizardfs
 RUN mkdir -p /mnt/docker-volumes
