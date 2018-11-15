@@ -109,7 +109,7 @@ app.use(function (req, res, next) {
     try {
       // Mount LizardFS remote path
       execFileSync(
-        'mfsmount',
+        'mfsmount -o big_writes,nodev,noatime,nosuid',
         [
           volume_root,
           '-H', process.env['HOST'],
